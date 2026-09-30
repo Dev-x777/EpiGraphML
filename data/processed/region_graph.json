@@ -1,0 +1,417 @@
+{
+  "directed": false,
+  "multigraph": false,
+  "graph": {},
+  "nodes": [
+    {
+      "id": "TN-ARI"
+    },
+    {
+      "id": "TN-CHE"
+    },
+    {
+      "id": "TN-COI"
+    },
+    {
+      "id": "TN-CUD"
+    },
+    {
+      "id": "TN-DHA"
+    },
+    {
+      "id": "TN-DIN"
+    },
+    {
+      "id": "TN-ERO"
+    },
+    {
+      "id": "TN-KAL"
+    },
+    {
+      "id": "TN-KAN"
+    },
+    {
+      "id": "TN-KAR"
+    },
+    {
+      "id": "TN-KRI"
+    },
+    {
+      "id": "TN-MAD"
+    },
+    {
+      "id": "TN-MAY"
+    },
+    {
+      "id": "TN-NAG"
+    },
+    {
+      "id": "TN-NAM"
+    },
+    {
+      "id": "TN-NIL"
+    },
+    {
+      "id": "TN-PER"
+    },
+    {
+      "id": "TN-PUD"
+    },
+    {
+      "id": "TN-RAM"
+    },
+    {
+      "id": "TN-RAN"
+    },
+    {
+      "id": "TN-SAL"
+    },
+    {
+      "id": "TN-SIV"
+    },
+    {
+      "id": "TN-TEN"
+    },
+    {
+      "id": "TN-THA"
+    },
+    {
+      "id": "TN-THE"
+    },
+    {
+      "id": "TN-THI"
+    },
+    {
+      "id": "TN-THO"
+    },
+    {
+      "id": "TN-TIR"
+    },
+    {
+      "id": "TN-VEL"
+    },
+    {
+      "id": "TN-VIL"
+    },
+    {
+      "id": "TN-VIR"
+    }
+  ],
+  "edges": [
+    {
+      "weight": 0.503272998935682,
+      "source": "TN-ARI",
+      "target": "TN-CHE"
+    },
+    {
+      "weight": 0.5242229029392715,
+      "source": "TN-ARI",
+      "target": "TN-VIR"
+    },
+    {
+      "weight": 0.8559322426751157,
+      "source": "TN-ARI",
+      "target": "TN-VIL"
+    },
+    {
+      "weight": 0.850039011940799,
+      "source": "TN-CHE",
+      "target": "TN-COI"
+    },
+    {
+      "weight": 0.7624302227202091,
+      "source": "TN-CHE",
+      "target": "TN-VIR"
+    },
+    {
+      "weight": 0.9893598289841028,
+      "source": "TN-CHE",
+      "target": "TN-NIL"
+    },
+    {
+      "weight": 0.5697228931104645,
+      "source": "TN-CHE",
+      "target": "TN-CUD"
+    },
+    {
+      "weight": 0.9504347926322994,
+      "source": "TN-COI",
+      "target": "TN-CUD"
+    },
+    {
+      "weight": 0.9022842235183446,
+      "source": "TN-COI",
+      "target": "TN-DHA"
+    },
+    {
+      "weight": 0.730660819197251,
+      "source": "TN-CUD",
+      "target": "TN-DHA"
+    },
+    {
+      "weight": 0.7960331547891486,
+      "source": "TN-CUD",
+      "target": "TN-DIN"
+    },
+    {
+      "weight": 0.7503171746429029,
+      "source": "TN-DHA",
+      "target": "TN-DIN"
+    },
+    {
+      "weight": 0.7296201277546598,
+      "source": "TN-DHA",
+      "target": "TN-ERO"
+    },
+    {
+      "weight": 0.7479466456062244,
+      "source": "TN-DHA",
+      "target": "TN-KAL"
+    },
+    {
+      "weight": 0.8028855326446434,
+      "source": "TN-DIN",
+      "target": "TN-ERO"
+    },
+    {
+      "weight": 0.8125794097930732,
+      "source": "TN-DIN",
+      "target": "TN-KAL"
+    },
+    {
+      "weight": 0.7158726420005703,
+      "source": "TN-ERO",
+      "target": "TN-KAL"
+    },
+    {
+      "weight": 0.6417306891338816,
+      "source": "TN-ERO",
+      "target": "TN-KAN"
+    },
+    {
+      "weight": 0.8261446950315923,
+      "source": "TN-KAL",
+      "target": "TN-KAN"
+    },
+    {
+      "weight": 0.9843309819718798,
+      "source": "TN-KAN",
+      "target": "TN-KAN"
+    },
+    {
+      "weight": 0.5107607767941285,
+      "source": "TN-KAN",
+      "target": "TN-KAR"
+    },
+    {
+      "weight": 0.5855947634194305,
+      "source": "TN-KAN",
+      "target": "TN-KRI"
+    },
+    {
+      "weight": 0.9174307652862705,
+      "source": "TN-KAR",
+      "target": "TN-TIR"
+    },
+    {
+      "weight": 0.6504734215530817,
+      "source": "TN-KAR",
+      "target": "TN-NAG"
+    },
+    {
+      "weight": 0.961842779419187,
+      "source": "TN-KRI",
+      "target": "TN-MAD"
+    },
+    {
+      "weight": 0.8008916311091752,
+      "source": "TN-KRI",
+      "target": "TN-MAY"
+    },
+    {
+      "weight": 0.6221858784802647,
+      "source": "TN-MAD",
+      "target": "TN-MAY"
+    },
+    {
+      "weight": 0.6703449808366106,
+      "source": "TN-MAD",
+      "target": "TN-NAG"
+    },
+    {
+      "weight": 0.5902391232591659,
+      "source": "TN-MAY",
+      "target": "TN-NAG"
+    },
+    {
+      "weight": 0.9546682444422145,
+      "source": "TN-MAY",
+      "target": "TN-NAM"
+    },
+    {
+      "weight": 0.8740225083772895,
+      "source": "TN-MAY",
+      "target": "TN-VIL"
+    },
+    {
+      "weight": 0.8542306265067632,
+      "source": "TN-NAG",
+      "target": "TN-NAM"
+    },
+    {
+      "weight": 0.7433995698466269,
+      "source": "TN-NAG",
+      "target": "TN-NIL"
+    },
+    {
+      "weight": 0.5386175460260554,
+      "source": "TN-NAM",
+      "target": "TN-NIL"
+    },
+    {
+      "weight": 0.8339429565512152,
+      "source": "TN-NAM",
+      "target": "TN-PER"
+    },
+    {
+      "weight": 0.7159973434902602,
+      "source": "TN-NIL",
+      "target": "TN-PER"
+    },
+    {
+      "weight": 0.5462612811996328,
+      "source": "TN-NIL",
+      "target": "TN-PUD"
+    },
+    {
+      "weight": 0.7407293158140745,
+      "source": "TN-PER",
+      "target": "TN-PUD"
+    },
+    {
+      "weight": 0.7197900636537766,
+      "source": "TN-PER",
+      "target": "TN-RAM"
+    },
+    {
+      "weight": 0.6457984543699933,
+      "source": "TN-PER",
+      "target": "TN-TIR"
+    },
+    {
+      "weight": 0.9716004293250673,
+      "source": "TN-PUD",
+      "target": "TN-RAM"
+    },
+    {
+      "weight": 0.830041585803196,
+      "source": "TN-PUD",
+      "target": "TN-RAN"
+    },
+    {
+      "weight": 0.5932417697981032,
+      "source": "TN-RAM",
+      "target": "TN-RAN"
+    },
+    {
+      "weight": 0.5094230979695827,
+      "source": "TN-RAM",
+      "target": "TN-SAL"
+    },
+    {
+      "weight": 0.9391670095627391,
+      "source": "TN-RAN",
+      "target": "TN-SAL"
+    },
+    {
+      "weight": 0.7867506040551183,
+      "source": "TN-RAN",
+      "target": "TN-THA"
+    },
+    {
+      "weight": 0.5408905225492664,
+      "source": "TN-SAL",
+      "target": "TN-SIV"
+    },
+    {
+      "weight": 0.6188012114301646,
+      "source": "TN-SAL",
+      "target": "TN-TEN"
+    },
+    {
+      "weight": 0.7042562890325469,
+      "source": "TN-SIV",
+      "target": "TN-TEN"
+    },
+    {
+      "weight": 0.8560387066029518,
+      "source": "TN-SIV",
+      "target": "TN-THA"
+    },
+    {
+      "weight": 0.5222993844693332,
+      "source": "TN-TEN",
+      "target": "TN-THA"
+    },
+    {
+      "weight": 0.7868358669062832,
+      "source": "TN-TEN",
+      "target": "TN-THE"
+    },
+    {
+      "weight": 0.6960387011809008,
+      "source": "TN-THA",
+      "target": "TN-THE"
+    },
+    {
+      "weight": 0.8155819519014657,
+      "source": "TN-THA",
+      "target": "TN-THI"
+    },
+    {
+      "weight": 0.9834613037149365,
+      "source": "TN-THE",
+      "target": "TN-THI"
+    },
+    {
+      "weight": 0.7319136706600013,
+      "source": "TN-THI",
+      "target": "TN-THO"
+    },
+    {
+      "weight": 0.9291928062280811,
+      "source": "TN-THI",
+      "target": "TN-TIR"
+    },
+    {
+      "weight": 0.500501938818841,
+      "source": "TN-THO",
+      "target": "TN-TIR"
+    },
+    {
+      "weight": 0.636303902806945,
+      "source": "TN-TIR",
+      "target": "TN-TIR"
+    },
+    {
+      "weight": 0.6503343448859931,
+      "source": "TN-TIR",
+      "target": "TN-VEL"
+    },
+    {
+      "weight": 0.7490339962942424,
+      "source": "TN-TIR",
+      "target": "TN-VIL"
+    },
+    {
+      "weight": 0.6028597447400148,
+      "source": "TN-VEL",
+      "target": "TN-VIL"
+    },
+    {
+      "weight": 0.5355338417124517,
+      "source": "TN-VEL",
+      "target": "TN-VIR"
+    }
+  ]
+}
