@@ -5,10 +5,6 @@ import json
 import pandas as pd
 from fastapi import FastAPI, HTTPException
 
-# --------------------------------------------------
-# PROJECT IMPORT SETUP
-# --------------------------------------------------
-
 PROJECT_ROOT = os.path.dirname(
     os.path.dirname(__file__)
 )
@@ -18,10 +14,6 @@ sys.path.append(PROJECT_ROOT)
 from rl.bandit_agent import allocate_resources
 from rl.seir_simulator import run_simulation
 
-
-# --------------------------------------------------
-# FASTAPI APP
-# --------------------------------------------------
 
 app = FastAPI(
     title="EpiGraphML API",
@@ -33,10 +25,6 @@ app = FastAPI(
 )
 
 
-# --------------------------------------------------
-# HELPER FUNCTIONS
-# --------------------------------------------------
-
 def load_risk_data():
 
     risk_path = os.path.join(
@@ -44,10 +32,7 @@ def load_risk_data():
         "region_risk_output.json"
     )
 
-    with open(
-        risk_path,
-        "r"
-    ) as f:
+    with open(risk_path, "r") as f:
         data = json.load(f)
 
     return data
@@ -62,11 +47,7 @@ def load_demographics():
         "tn_demographics.csv"
     )
 
-    df = pd.read_csv(
-        demo_path
-    )
-
-    return df
+    return pd.read_csv(demo_path)
 
 
 def get_region_data(region_id):
@@ -85,18 +66,32 @@ def get_population(region_id):
 
     df_demo = load_demographics()
 
-    region_row = df_demo[
+    row = df_demo[
         df_demo["region_id"] == region_id
     ]
 
-    if region_row.empty:
+    if row.empty:
         return None
 
-    population = int(
-        region_row.iloc[0]["population"]
+    return int(
+        row.iloc[0]["population"]
     )
 
-    return population
+
+def get_district_name(region_id):
+
+    df_demo = load_demographics()
+
+    row = df_demo[
+        df_demo["region_id"] == region_id
+    ]
+
+    if row.empty:
+        return region_id
+
+    return str(
+        row.iloc[0]["district"]
+    )
 
 
 def get_region_allocation(region_id):
@@ -111,10 +106,6 @@ def get_region_allocation(region_id):
     return None
 
 
-# --------------------------------------------------
-# HOME ENDPOINT
-# --------------------------------------------------
-
 @app.get("/")
 def home():
 
@@ -124,21 +115,11 @@ def home():
     }
 
 
-# --------------------------------------------------
-# GET ALL RISK DATA
-# --------------------------------------------------
-
 @app.get("/risk")
 def get_risk():
 
-    data = load_risk_data()
+    return load_risk_data()
 
-    return data
-
-
-# --------------------------------------------------
-# GET SINGLE REGION RISK
-# --------------------------------------------------
 
 @app.get("/risk/{region_id}")
 def get_region_risk(region_id: str):
@@ -157,10 +138,6 @@ def get_region_risk(region_id: str):
     return region
 
 
-# --------------------------------------------------
-# GET RESOURCE ALLOCATION
-# --------------------------------------------------
-
 @app.get("/allocation")
 def get_allocation():
 
@@ -173,10 +150,6 @@ def get_allocation():
         "allocations": allocations
     }
 
-
-# --------------------------------------------------
-# GET ALLOCATION FOR ONE REGION
-# --------------------------------------------------
 
 @app.get("/allocation/{region_id}")
 def get_single_allocation(
@@ -197,18 +170,10 @@ def get_single_allocation(
     return allocation
 
 
-# --------------------------------------------------
-# SIMULATE A REGION
-# --------------------------------------------------
-
 @app.get("/simulation/{region_id}")
 def simulate_region(
     region_id: str
 ):
-
-    # ------------------------------
-    # Get region prediction
-    # ------------------------------
 
     region = get_region_data(
         region_id
@@ -221,10 +186,6 @@ def simulate_region(
             detail="Region not found"
         )
 
-    # ------------------------------
-    # Get real population
-    # ------------------------------
-
     population = get_population(
         region_id
     )
@@ -235,10 +196,6 @@ def simulate_region(
             status_code=404,
             detail="Population data not found"
         )
-
-    # ------------------------------
-    # Get resource allocation
-    # ------------------------------
 
     allocation = get_region_allocation(
         region_id
@@ -251,10 +208,6 @@ def simulate_region(
             detail="Allocation not found"
         )
 
-    # ------------------------------
-    # Initial infection value
-    # ------------------------------
-
     predicted_cases = int(
         region["predicted_cases"]
     )
@@ -264,42 +217,26 @@ def simulate_region(
         1
     )
 
-    # ------------------------------
-    # Simulation without intervention
-    # ------------------------------
-
-    without_intervention = (
-        run_simulation(
-            population=population,
-            initial_infected=initial_infected,
-            days=30
-        )
+    without_intervention = run_simulation(
+        population=population,
+        initial_infected=initial_infected,
+        days=30
     )
 
-    # ------------------------------
-    # Simulation with intervention
-    # ------------------------------
-
-    with_intervention = (
-        run_simulation(
-            population=population,
-            initial_infected=initial_infected,
-            days=30,
-            vaccine_doses=allocation[
-                "vaccine_doses"
-            ],
-            testing_kits=allocation[
-                "testing_kits"
-            ],
-            staff=allocation[
-                "staff"
-            ]
-        )
+    with_intervention = run_simulation(
+        population=population,
+        initial_infected=initial_infected,
+        days=30,
+        vaccine_doses=allocation[
+            "vaccine_doses"
+        ],
+        testing_kits=allocation[
+            "testing_kits"
+        ],
+        staff=allocation[
+            "staff"
+        ]
     )
-
-    # ------------------------------
-    # Calculate summary metrics
-    # ------------------------------
 
     no_intervention_burden = sum(
         day["infected"]
@@ -327,28 +264,15 @@ def simulate_region(
 
         reduction_percentage = 0
 
-    # ------------------------------
-    # API RESPONSE
-    # ------------------------------
-
     return {
         "region_id": region_id,
-
+        "district": get_district_name(region_id),
         "population": population,
-
-        "risk_score":
-            region["risk_score"],
-
-        "predicted_cases":
-            predicted_cases,
-
+        "risk_score": region["risk_score"],
+        "predicted_cases": predicted_cases,
         "contributing_factors":
-            region[
-                "contributing_factors"
-            ],
-
-        "allocation":
-            allocation,
+            region["contributing_factors"],
+        "allocation": allocation,
 
         "simulation_summary": {
 
@@ -385,22 +309,39 @@ def simulate_region(
     }
 
 
-# --------------------------------------------------
-# LIST AVAILABLE REGIONS
-# --------------------------------------------------
-
 @app.get("/regions")
 def get_regions():
 
     data = load_risk_data()
 
+    df_demo = load_demographics()
+
     regions = []
 
     for region in data["regions"]:
 
+        region_id = region[
+            "region_id"
+        ]
+
+        row = df_demo[
+            df_demo["region_id"]
+            == region_id
+        ]
+
+        if not row.empty:
+            district = row.iloc[0][
+                "district"
+            ]
+        else:
+            district = region_id
+
         regions.append({
             "region_id":
-                region["region_id"],
+                region_id,
+
+            "district":
+                district,
 
             "risk_score":
                 region["risk_score"],
